@@ -44,9 +44,6 @@ useSeoMeta({
           />
         </UBadge>
       </template>
-
-      <ImagePlaceholder />
-
       <!-- <ULandingLogos
         :title="page.logos.title"
         align="center"
@@ -81,6 +78,27 @@ useSeoMeta({
 
     </ULandingSection>
 
+    <ULandingSection
+      id="tech"
+      icon="i-heroicons-rocket-launch"
+      title="The star of our show.."
+      description="6 iterations of brainstorming, CAD design and software development"
+    />
+
+    <ULandingSection
+      title="A robot that wins the game"
+      description="Nuxt UI Pro ships with an extensive set of advanced components that cover a wide range of use-cases."
+      :features="[{ name: 'Fully customizable', description: 'Like Nuxt UI, change the style of any component from your App Config or customize them specifically through the ui prop.', icon: 'i-heroicons-wrench-screwdriver' }, { name: 'Slots for everything', description: 'Each component leverages the power of Vues slots to give you the flexibility to build anything.', icon: 'i-heroicons-square-3-stack-3d' }]"
+      align="right"
+    >
+      <img
+        src="https://picsum.photos/360/640"
+        class="w-full rounded-md shadow-xl ring-1 ring-gray-300 dark:ring-gray-700"
+      />
+    </ULandingSection>
+
+
+
     <ULandingSection class="bg-primary-50 dark:bg-primary-400 dark:bg-opacity-10">
       <ULandingCTA
         v-bind="page.cta"
@@ -88,25 +106,8 @@ useSeoMeta({
       />
     </ULandingSection>
 
-    <ULandingSection
-      id="faq"
-      :title="page.faq.title"
-      :description="page.faq.description"
-      class="scroll-mt-[var(--header-height)]"
-    >
-      <ULandingFAQ
-        multiple
-        :items="page.faq.items"
-        :ui="{
-          button: {
-            label: 'font-semibold',
-            trailingIcon: {
-              base: 'w-6 h-6'
-            }
-          }
-        }"
-        class="max-w-4xl mx-auto"
-      />
-    </ULandingSection>
+
+
+    
   </div>
 </template>
