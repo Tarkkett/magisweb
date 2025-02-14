@@ -1,4 +1,6 @@
 <script setup lang="ts">
+import { NuxtImg } from '#components';
+
 const nuxtApp = useNuxtApp()
 const { activeHeadings, updateHeadings } = useScrollspy()
 
@@ -37,15 +39,22 @@ nuxtApp.hooks.hookOnce('page:finish', () => {
 <template>
   <UHeader :links="links">
     <template #logo>
-      MAGIS 25584 <UBadge
+      MAGIS 25584 
+      <UBadge
         label="MAG6.5"
         variant="subtle"
-        class="mb-0.5"
+        class="mb-0.5 hidden sm:block"
       />
     </template>
 
     <template #right>
       <UColorModeButton />
+      <NuxtImg 
+        src="https://res.cloudinary.com/donpcwlwk/image/upload/v1734038815/LowPolyBlackHole_V4_2x_uahsml.png" 
+        width="50px" 
+        height="50px"
+        class="transition-transform duration-500 hover:rotate-180"
+      />
     </template>
 
     <template #panel>

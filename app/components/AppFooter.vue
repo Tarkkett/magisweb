@@ -1,10 +1,7 @@
 <script setup lang="ts">
-const links = [{
-  label: 'Contacts',
-  to: ''
-}, {
+const links = [ {
   label: 'Support us',
-  to: ''
+  to: '/support'
 }]
 </script>
 

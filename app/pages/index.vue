@@ -60,6 +60,7 @@ useSeoMeta({
 </script>
 
 <template>
+  <AppHeader />
   <div>
     <ULandingHero
       :title="page.hero.title"
@@ -132,7 +133,7 @@ useSeoMeta({
     <ULandingSection
       headline="MAG5"
       title="Explore Our Robot in 3D"
-      description="Interact with our latest robot CAD design in real-time. Rotate, zoom, and explore the details."
+      description="Interact with our latest robot CAD design in real-time. Rotate, zoom, and explore the details. Load times vary from 10 seconds to 1 minute"
       class="flex flex-col items-center justify-center text-center"
     >
       <model-viewer

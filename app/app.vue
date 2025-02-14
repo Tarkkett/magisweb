@@ -4,7 +4,7 @@ useHead({
     { name: 'viewport', content: 'width=device-width, initial-scale=1' }
   ],
   link: [
-    { rel: 'icon', href: '/favicon.ico' }
+    { rel: 'icon', href: 'https://res.cloudinary.com/donpcwlwk/image/upload/v1734038815/LowPolyBlackHole_V4_2x_uahsml.png' }
   ],
   htmlAttrs: {
     lang: 'en'
@@ -19,8 +19,8 @@ useSeoMeta({
 </script>
 
 <template>
-  <AppHeader />
 
+  <NuxtLoadingIndicator />
   <UMain>
     <NuxtPage />
   </UMain>
