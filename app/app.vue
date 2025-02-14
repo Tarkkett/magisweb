@@ -1,7 +1,8 @@
 <script setup lang="ts">
 useHead({
   meta: [
-    { name: 'viewport', content: 'width=device-width, initial-scale=1' }
+    { name: 'viewport', content: 'width=device-width, initial-scale=1' },
+    {name: 'og:title', content: 'https://res.cloudinary.com/donpcwlwk/image/upload/v1739542274/7B7A5267_gxrees.jpg'}
   ],
   link: [
     { rel: 'icon', href: 'https://res.cloudinary.com/donpcwlwk/image/upload/v1734038815/LowPolyBlackHole_V4_2x_uahsml.png' }
