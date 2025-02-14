@@ -13,8 +13,8 @@ const links = computed(() => [{
   icon: 'i-heroicons-credit-card',
   active: activeHeadings.value.includes('pricing') && !activeHeadings.value.includes('testimonials')
 }, {
-  label: 'Read more',
-  to: '#more',
+  label: 'Achievements',
+  to: '#achieve',
   icon: 'i-heroicons-academic-cap',
   active: activeHeadings.value.includes('testimonials')
 }, {
@@ -28,7 +28,7 @@ nuxtApp.hooks.hookOnce('page:finish', () => {
   updateHeadings([
     document.querySelector('#about'),
     document.querySelector('#tech'),
-    document.querySelector('#more'),
+    document.querySelector('#achieve'),
     document.querySelector('#faq')
   ])
 })
@@ -42,6 +42,10 @@ nuxtApp.hooks.hookOnce('page:finish', () => {
         variant="subtle"
         class="mb-0.5"
       />
+    </template>
+
+    <template #right>
+      <UColorModeButton />
     </template>
 
     <template #panel>

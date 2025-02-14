@@ -1,12 +1,62 @@
 <script setup lang="ts">
-const { data: page } = await useAsyncData('index', () => queryContent('/').findOne())
+const { data: page } = await useAsyncData('home', () => queryContent('/').findOne());
+
+const targetDate = new Date(Date.UTC(2025, 2, 22, 20, 0, 0));
+
+const countdown = ref({ days: 0, hours: 0, minutes: 0, seconds: 0 });
+
+const updateCountdown = () => {
+  const now = new Date().getTime();
+  const timeLeft = targetDate.getTime() - now;
+
+  if (timeLeft > 0) {
+    countdown.value = {
+      days: Math.floor(timeLeft / (1000 * 60 * 60 * 24)),
+      hours: Math.floor((timeLeft % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60)),
+      minutes: Math.floor((timeLeft % (1000 * 60 * 60)) / (1000 * 60)),
+      seconds: Math.floor((timeLeft % (1000 * 60)) / 1000),
+    };
+  } else {
+    countdown.value = { days: 0, hours: 0, minutes: 0, seconds: 0 };
+  }
+};
+
+const faq_items = [{
+  label: 'Why MAGIS?',
+  content: 'Our team, MAGIS, embodies the Latin meaning of "more" or "greater" by constantly striving for excellence—pushing beyond limits, seeking continuous growth, fostering innovation, and working together to achieve more than we ever thought possible.'
+}, {
+  label: 'Can I join?',
+  content: 'Absolutely! We’re always excited to welcome passionate and driven individuals to our FTC team. Whether you’re interested in coding, engineering, design, or strategy, there’s a place for you. Join us and be part of something amazing!'
+}, {
+  label: 'Do I need prior experience to join?',
+  content: 'Not at all! We welcome students of all skill levels. Whether you’re a beginner or an expert, we provide training and mentorship to help you grow.'
+}, {
+  label: 'How can I support your FTC team if I’m not a student?',
+  content: 'We appreciate any support! You can sponsor our team, donate materials, or volunteer as a mentor. Every contribution helps us reach new heights!'
+}]
+
+let countdownInterval;
+onMounted(() => {
+  updateCountdown();
+  countdownInterval = setInterval(updateCountdown, 1000);
+  import('@google/model-viewer');
+});
+
+onUnmounted(() => {
+  clearInterval(countdownInterval);
+});
+
+const achievements = [
+  { title: "Lithuanian Championship Winning alliance 1st pick", description: "Lithuanian championship 2025", icon: "i-heroicons-trophy" },
+  { title: "Inspire 2nd place", description: "Lithuanian championship 2025", icon: "i-heroicons-light-bulb" },
+];
 
 useSeoMeta({
   title: page.value.title,
   ogTitle: page.value.title,
   description: page.value.description,
   ogDescription: page.value.description
-})
+});
 </script>
 
 <template>
@@ -15,46 +65,15 @@ useSeoMeta({
       :title="page.hero.title"
       :description="page.hero.description"
       :links="page.hero.links"
+      class="relative overflow-hidden"
     >
-      <template #headline>
-        <UBadge
-          v-if="page.hero.headline"
-          variant="subtle"
-          size="lg"
-          class="relative rounded-full font-semibold"
-        >
-          <NuxtLink
-            :to="page.hero.headline.to"
-            target="_blank"
-            class="focus:outline-none"
-            tabindex="-1"
-          >
-            <span
-              class="absolute inset-0"
-              aria-hidden="true"
-            />
-          </NuxtLink>
-
-          {{ page.hero.headline.label }}
-
-          <UIcon
-            v-if="page.hero.headline.icon"
-            :name="page.hero.headline.icon"
-            class="ml-1 w-4 h-4 pointer-events-none"
-          />
-        </UBadge>
-      </template>
-      <!-- <ULandingLogos
-        :title="page.logos.title"
-        align="center"
-      >
-        <UIcon
-          v-for="icon in page.logos.icons"
-          :key="icon"
-          :name="icon"
-          class="w-12 h-12 lg:w-16 lg:h-16 flex-shrink-0 text-gray-900 dark:text-white"
-        />
-      </ULandingLogos> -->
+      <!-- Background Video -->
+      <div class="absolute inset-0 -z-10">
+        <video autoplay loop muted playsinline class="w-full h-full object-cover">
+          <source src="https://res.cloudinary.com/donpcwlwk/video/upload/v1739458290/0001_bito1f.mp4" type="video/mp4" />
+          Your browser does not support the video tag.
+        </video>
+      </div>
     </ULandingHero>
 
     <ULandingSection
@@ -63,51 +82,113 @@ useSeoMeta({
       :headline="page.features.headline"
       id="about"
     >
-      <UPageColumns
-        
-        class="xl:columns-4 scroll-mt-[calc(var(--header-height)+140px+128px+96px)]"
-      >
-        <div
-          v-for="(testimonial, index) in page.testimonials.items"
-          :key="index"
-          class="break-inside-avoid"
-        >
+      <UPageColumns class="xl:columns-4 scroll-mt-[calc(var(--header-height)+140px+128px+96px)]">
+        <div v-for="(testimonial, index) in page.testimonials.items" :key="index" class="break-inside-avoid">
           <ULandingTestimonial v-bind="testimonial" />
         </div>
       </UPageColumns>
-
     </ULandingSection>
 
-    <ULandingSection
-      id="tech"
-      icon="i-heroicons-rocket-launch"
-      title="The star of our show.."
-      description="6 iterations of brainstorming, CAD design and software development"
-    />
 
+    <!-- Countdown Timer Section -->
     <ULandingSection
-      title="A robot that wins the game"
-      description="Nuxt UI Pro ships with an extensive set of advanced components that cover a wide range of use-cases."
-      :features="[{ name: 'Fully customizable', description: 'Like Nuxt UI, change the style of any component from your App Config or customize them specifically through the ui prop.', icon: 'i-heroicons-wrench-screwdriver' }, { name: 'Slots for everything', description: 'Each component leverages the power of Vues slots to give you the flexibility to build anything.', icon: 'i-heroicons-square-3-stack-3d' }]"
-      align="right"
+      title="Robot Reveal Countdown"
+      description="The wait is almost over! Watch the reveal of our final robot version in:"
+      class="text-center flex flex-col items-center"
+      :ui="{wrapper: 'py-4 sm:py-0'}"
     >
-      <img
-        src="https://picsum.photos/360/640"
-        class="w-full rounded-md shadow-xl ring-1 ring-gray-300 dark:ring-gray-700"
-      />
+      <div class="gap-6 text-5xl font-bold text-primary-600 dark:text-primary-300 text-center flex justify-center">
+        <transition-group name="countdown" tag="div" class="flex gap-6">
+          <div v-for="(unit, key) in countdown" :key="key" class="flex flex-col items-center">
+            <span class="animate-flip">{{ unit }}</span>
+            <span class="text-sm text-gray-500 dark:text-gray-400 uppercase">{{ key }}</span>
+          </div>
+        </transition-group>
+      </div>
+
+      <p class="mt-4 text-lg text-gray-600 dark:text-gray-400 animate-fade-in">
+        Stay tuned for the big reveal on <strong>March 22, 2025, at 20:00 UTC</strong>!
+      </p>
     </ULandingSection>
 
-
-
-    <ULandingSection class="bg-primary-50 dark:bg-primary-400 dark:bg-opacity-10">
-      <ULandingCTA
-        v-bind="page.cta"
-        :card="false"
-      />
+    <!-- Achievements Section -->
+    <ULandingSection title="Our Achievements" description="A look at our proudest milestones and accomplishments." class="text-center" :ui="{container: 'gap-10 sm:gap-y-10'}">
+      <span id="achieve"></span>
+      <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-2 gap-6 mt-6">
+        <div
+          v-for="(achievement, index) in achievements"
+          :key="index"
+          class="p-6 bg-white dark:bg-gray-800 rounded-xl shadow-lg transform transition-all duration-300 hover:scale-105"
+        >
+          <UIcon :name="achievement.icon" class="text-primary-500 dark:text-primary-300 text-5xl mb-3" />
+          <h3 class="text-xl font-semibold">{{ achievement.title }}</h3>
+          <p class="text-gray-600 dark:text-gray-400 mt-2">{{ achievement.description }}</p>
+        </div>
+      </div>
     </ULandingSection>
 
+    <!-- 3D Model Viewer Section -->
+    <span id="tech"></span>
+    <ULandingSection
+      headline="MAG5"
+      title="Explore Our Robot in 3D"
+      description="Interact with our latest robot CAD design in real-time. Rotate, zoom, and explore the details."
+      class="flex flex-col items-center justify-center text-center"
+    >
+      <model-viewer
+        alt="Robot CAD Model"
+        src="/Main.glb"
+        auto-rotate
+        shadow-intensity="1"
+        camera-controls
+        class="w-full h-[700px]"
+      ></model-viewer>
+    </ULandingSection>
+    <ULandingSection 
+      title="Have questions?" 
+      description="We have the answers to them"
+      :ui="{ 
+        wrapper: 'py-4 sm:py-0', 
+        container: 'gap-10 sm:gap-y-10', 
+        title: 'bg-gradient-to-r from-blue-600 via-green-500 to-indigo-400 text-transparent bg-clip-text' 
+      }">
+      
+      <span id="faq"></span>
+      <ULandingFAQ :items="faq_items" multiple />
+    </ULandingSection>
 
-
-    
   </div>
 </template>
+
+<style>
+/* Vue Transition for smooth updates */
+.countdown-enter-active,
+.countdown-leave-active {
+  transition: transform 0.5s ease, opacity 0.5s ease;
+}
+.countdown-enter-from {
+  transform: translateY(-10px);
+  opacity: 0;
+}
+.countdown-leave-to {
+  transform: translateY(10px);
+  opacity: 0;
+}
+
+/* Tailwind-inspired animations */
+@keyframes flip {
+  0% { transform: rotateX(90deg); opacity: 0; }
+  100% { transform: rotateX(0deg); opacity: 1; }
+}
+.animate-flip {
+  animation: flip 0.5s ease-in-out;
+}
+
+@keyframes fade-in {
+  from { opacity: 0; transform: translateY(10px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+.animate-fade-in {
+  animation: fade-in 1s ease-out;
+}
+</style>
