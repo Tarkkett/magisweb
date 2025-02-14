@@ -49,10 +49,11 @@ nuxtApp.hooks.hookOnce('page:finish', () => {
 
     <template #right>
       <UColorModeButton />
-      <NuxtImg 
+      <img 
         src="https://res.cloudinary.com/donpcwlwk/image/upload/v1734038815/LowPolyBlackHole_V4_2x_uahsml.png" 
         width="50px" 
         height="50px"
+        alt="MAGIS logo"
         class="transition-transform duration-500 hover:rotate-180"
       />
     </template>
