@@ -134,7 +134,7 @@ useSeoMeta({
       headline="MAG5"
       title="Explore Our Robot in 3D"
       description="Interact with our latest robot CAD design in real-time. Rotate, zoom, and explore the details. Load times vary from 10 seconds to 1 minute"
-      class="flex flex-col items-center justify-center text-center"
+      class="flex flex-col items-center justify-center text-center hidden sm:block"
     >
       <model-viewer
         alt="Robot CAD Model"
