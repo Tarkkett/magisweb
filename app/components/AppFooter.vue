@@ -1,7 +1,8 @@
 <script setup lang="ts">
 const links = [ {
-  label: 'Support us',
-  to: '/support'
+  label: 'Support or join us',
+  to: '/support',
+  color: 'purple'
 }]
 </script>
 
