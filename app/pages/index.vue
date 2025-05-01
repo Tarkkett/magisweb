@@ -22,7 +22,7 @@ const updateCountdown = () => {
 };
 
 const faq_items = [{
-  label: 'Why MAGIS?',
+  label: 'Why the name MAGIS?',
   content: 'Our team, MAGIS, embodies the Latin meaning of "more" or "greater" by constantly striving for excellence—pushing beyond limits, seeking continuous growth, fostering innovation, and working together to achieve more than we ever thought possible.'
 }, {
   label: 'Can I join?',
@@ -49,6 +49,12 @@ onUnmounted(() => {
 const achievements = [
   { title: "Lithuanian Championship Winning alliance 1st pick", description: "Lithuanian championship 2025", icon: "i-heroicons-trophy" },
   { title: "Inspire 2nd place", description: "Lithuanian championship 2025", icon: "i-heroicons-light-bulb" },
+  { title: "Robot Games #1 - 2nd place", description: "Robot Games #1", icon: "i-heroicons-trophy" },
+  { title: "Robot Games #2 - 1st place", description: "Robot Games #2", icon: "i-heroicons-trophy" },
+  { title: "Robot Games #3 - 1st place", description: "Robot Games #3", icon: "i-heroicons-trophy" },
+  { title: "Robot Games #4 - 1st place", description: "Robot Games #4", icon: "i-heroicons-trophy" },
+  { title: "Robot Games #5 - 1st place", description: "Robot Games #5", icon: "i-heroicons-trophy" },
+  { title: "Robot Games #6 - 1st place", description: "Robot Games #6", icon: "i-heroicons-trophy" }
 ];
 
 useSeoMeta({
@@ -94,22 +100,14 @@ useSeoMeta({
     <!-- Countdown Timer Section -->
     <ULandingSection
       title="Robot Reveal Countdown"
-      description="The wait is almost over! Watch the reveal of our final robot version in:"
+      description="The wait is finally over! Watch the reveal of our final robot version - MAG8."
       class="text-center flex flex-col items-center"
       :ui="{wrapper: 'py-4 sm:py-0'}"
     >
-      <div class="gap-6 text-5xl font-bold text-primary-600 dark:text-primary-300 text-center flex justify-center">
-        <transition-group name="countdown" tag="div" class="flex gap-6">
-          <div v-for="(unit, key) in countdown" :key="key" class="flex flex-col items-center">
-            <span class="animate-flip">{{ unit }}</span>
-            <span class="text-sm text-gray-500 dark:text-gray-400 uppercase">{{ key }}</span>
-          </div>
-        </transition-group>
-      </div>
-
-      <p class="mt-4 text-lg text-gray-600 dark:text-gray-400 animate-fade-in">
-        Stay tuned for the big reveal on <strong>March 22, 2025, at 20:00 UTC</strong>!
-      </p>
+    <video autoplay loop muted playsinline class="w-full h-full object-cover">
+      <source src="https://res.cloudinary.com/donpcwlwk/video/upload/v1746089719/MAG8Reveal_egopus.mp4" type="video/mp4" />
+      Your browser does not support the video tag.
+    </video>
     </ULandingSection>
 
     <!-- Achievements Section -->
@@ -133,7 +131,7 @@ useSeoMeta({
     <ULandingSection
       headline="MAG5"
       title="Explore Our Robot in 3D"
-      description="Interact with our latest robot CAD design in real-time. Rotate, zoom, and explore the details. Load times vary from 10 seconds to 1 minute"
+      description="Interact with our championship winning robot CAD design in real-time. Rotate, zoom, and explore the details. Load times may vary from 10 seconds to several minutes."
       class="flex flex-col items-center justify-center text-center"
     >
       <model-viewer
@@ -147,7 +145,7 @@ useSeoMeta({
     </ULandingSection>
     <ULandingSection 
       title="Have questions?" 
-      description="We have the answers to them"
+      description="We have the answers."
       :ui="{ 
         wrapper: 'py-4 sm:py-0', 
         container: 'gap-10 sm:gap-y-10', 

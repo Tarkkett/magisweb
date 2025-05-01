@@ -57,38 +57,38 @@ testimonials:
         avatar:
           src: https://res.cloudinary.com/donpcwlwk/image/upload/v1714638525/IMG_8227_gy6ylo_Squared_q8szk6.jpg
           loading: lazy
-    - quote: Eiusmod dolor aute ut nulla pariatur officia consequat aute amet exercitation.
+    - quote: Yes
       author:
         name: Julius Augustaitis
         description: Team Captain
         avatar:
-          src: https://i.pravatar.cc/120?img=7
+          src: https://res.cloudinary.com/donpcwlwk/image/upload/v1746104801/Screenshot_20250226_212334_Facebook_ac22g9.png
           loading: lazy
-    - quote: Id duis velit enim officia ad nisi incididunt magna ex dolor minim deserunt dolor. Esse incididunt cillum nostrud esse do quis amet labore amet nulla eiusmod amet nulla Lorem. Incididunt ex voluptate irure officia laboris ea proident est qui.
+    - quote: Doing things quite often leads to results. Do things.
       author:
         name: Adomas Juzakėnas
         description: Mechanical Design
         avatar:
-          src: https://i.pravatar.cc/120?img=3
+          src: https://res.cloudinary.com/donpcwlwk/image/upload/v1740727025/image_vzwvp7.png
           loading: lazy
-    - quote: Velit consectetur in adipisicing culpa eiusmod commodo eu ex dolore. Officia irure nisi dolor dolore velit fugiat. Aliqua sint aliqua aute elit eu sunt.
+    - quote: The color purple is undeniably superior.
       author:
         name: Vakaris Gavėnas
-        description: Mechaical Design
+        description: Mechanical Design, Marketing
         avatar:
-          src: https://i.pravatar.cc/120?img=5
+          src: https://res.cloudinary.com/donpcwlwk/image/upload/v1740727334/IMG_7722_jn7bxy.jpg
           loading: lazy
-    - quote: Proident quis deserunt qui ex exercitation veniam id Lorem est cupidatat ipsum irure aliquip ad.
+    - quote: Be curious. Not judgemental
       author:
-        name: Dainius Užusenis
+        name: Kristupas Šilalė
+        description: International relations
+        avatar:
+          src: https://res.cloudinary.com/donpcwlwk/image/upload/v1740726920/IMG_7083_j83aje_c_crop_ar_1_1_uwzauu.jpg
+          loading: lazy
+    - quote: If it ain’t broke, take it apart and find out why.
+      author:
+        name: Arsenii Trofimov
         description: Mechanical Design
         avatar:
-          src: https://i.pravatar.cc/120?img=8
-          loading: lazy
-    - quote: Magna officia quis ea ea in officia non voluptate ipsum culpa do labore sunt. Aute est dolore commodo sint officia ad laboris dolor magna aliquip exercitation tempor commodo.
-      author:
-        name: Dovydas Šatkauskas
-        description: Outreach
-        avatar:
-          src: https://i.pravatar.cc/120?img=9
+          src: https://res.cloudinary.com/donpcwlwk/image/upload/v1740727095/Arsenii_liqy68.jpg
           loading: lazy
