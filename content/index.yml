@@ -59,8 +59,8 @@ testimonials:
           loading: lazy
     - quote: Yes
       author:
-        name: Julius Augustaitis
-        description: Team Captain
+        name: Arsenii Trofimov
+        description: Mechanical Design
         avatar:
           src: https://res.cloudinary.com/donpcwlwk/image/upload/v1746104801/Screenshot_20250226_212334_Facebook_ac22g9.png
           loading: lazy

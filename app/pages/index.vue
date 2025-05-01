@@ -26,7 +26,7 @@ const faq_items = [{
   content: 'Our team, MAGIS, embodies the Latin meaning of "more" or "greater" by constantly striving for excellence—pushing beyond limits, seeking continuous growth, fostering innovation, and working together to achieve more than we ever thought possible.'
 }, {
   label: 'Can I join?',
-  content: 'Absolutely! We’re always excited to welcome passionate and driven individuals to our FTC team. Whether you’re interested in coding, engineering, design, or strategy, there’s a place for you. Join us and be part of something amazing!'
+  content: 'Absolutely! We’re always excited to welcome passionate and driven individuals to our FTC team. Whether you’re interested in coding, engineering, design, or strategy, there’s a place for you. Join us and be part of something amazing! Simply follow the link at the bottom of the page to apply.'
 }, {
   label: 'Do I need prior experience to join?',
   content: 'Not at all! We welcome students of all skill levels. Whether you’re a beginner or an expert, we provide training and mentorship to help you grow.'
